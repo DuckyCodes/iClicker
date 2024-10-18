@@ -1,12 +1,24 @@
-# iClicker
 1. Ensure Python is installed on your system.
 
 2. Make sure you have Chrome as your browser.
 
-3. Download the correct [ChromeDriver](https://developer.chrome.com/docs/chromedriver/downloads) for your Chrome version and place it in the src folder.
+3. Install [Chrome Driver](https://developer.chrome.com/docs/chromedriver/downloads) if you haven't already.
+
+```
+console Linux
+sudo apt-get install chromium-chromedriver
+
+console Windows
+winget install chromium-chromedriver
+
+console MAC
+brew install chromedriver
+
+```
 
 4. Install [Selenium](https://www.selenium.dev/documentation/webdriver/getting_started/install_library/) if you haven't already.
- ```console
+
+```console
 pip install selenium
 ```
 
