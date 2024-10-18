@@ -22,10 +22,7 @@ def get_current_class():
 
 # Function to run the iClicker automation
 def run_iclicker(class_name, class_url, end_time):
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    driver_path = os.path.join(current_dir, 'chromedriver.exe')
-    service = Service(driver_path)
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome()
 
     # Log in to iClicker
     driver.get('https://student.iclicker.com/#/login')
