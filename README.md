@@ -1,3 +1,7 @@
+# **Class Poll Automation Script**
+The Class Poll Automation Script automates iClicker poll participation according to class schedules by utilizing Selenium for tasks such as handling login, detecting classes, and interacting with polls. It includes time-based checks to ensure that the script runs only during active class periods.
+
+# **Instructions to Install**
 1. Ensure Python is installed on your system.
 
 2. Make sure you have Chrome as your browser.
