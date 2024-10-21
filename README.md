@@ -6,7 +6,7 @@ The Class Poll Automation Script automates iClicker poll participation according
 
 2. Make sure you have Chrome as your browser.
 
-3. Install [Chrome Driver](https://developer.chrome.com/docs/chromedriver/downloads) if you haven't already.
+3. Install Chrome Driver with the following commands
 
 ```
 console Linux
