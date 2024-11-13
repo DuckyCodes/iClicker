@@ -12,13 +12,17 @@ from setup import EMAIL, PASSWORD, CLASS_SCHEDULES, POLL_RATE, WAIT_JOIN
 def get_current_class():
     current_day = datetime.now().strftime('%A')
     current_time = datetime.now().strftime('%H:%M')
+    print(f"Debug: Current day: {current_day}, Current time: {current_time}")  # Debug print
 
     for class_name, (class_url, days_of_week, time_range) in CLASS_SCHEDULES.items():
         start_time, end_time = time_range
+        print(f"Debug: Checking class {class_name}: days={days_of_week}, time={start_time}-{end_time}")  # Debug print
         if current_day in days_of_week and start_time <= current_time <= end_time:
-            return class_name, class_url, end_time  # Return end time as well
+            print(f"Debug: Match found for {class_name}")  # Debug print
+            return class_name, class_url, end_time
 
-    return None, None, None  # If no class is found
+    print("Debug: No matching class found")  # Debug print
+    return None, None, None
 
 # Function to run the iClicker automation
 def run_iclicker(class_name, class_url, end_time):
@@ -104,17 +108,20 @@ def run_iclicker(class_name, class_url, end_time):
         print(f"Error closing the driver: {e}")
 
 # Main loop to check for classes and run iClicker
-while True:
-    try:
-        class_name, class_url, end_time = get_current_class()  # Get end time too
-        
-        if class_name:
-            print(f"Class '{class_name}' is scheduled. Starting iClicker...")
-            run_iclicker(class_name, class_url, end_time)  # Pass end time to the function
-        else:
-            print("No class scheduled at this time. Checking again in 10 minutes...")
-            time.sleep(600)  # Check every 10 minutes
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        time.sleep(600)  # Wait before retrying
+if __name__ == "__main__":  # Add this main guard
+    print("Debug: Script starting")  # Debug print
+    while True:
+        try:
+            print("Debug: Checking for current class")  # Debug print
+            class_name, class_url, end_time = get_current_class()
+            
+            if class_name:
+                print(f"Class '{class_name}' is scheduled. Starting iClicker...")
+                run_iclicker(class_name, class_url, end_time)
+            else:
+                print("No class scheduled at this time. Checking again in 10 minutes...")
+                time.sleep(600)
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            time.sleep(600)
 
